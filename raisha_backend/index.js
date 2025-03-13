@@ -1,3 +1,4 @@
+const pool = require('./db');
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -10,6 +11,9 @@ app.get('/', (req, res) => {
     res.send('Hello World from Express.js!');
 });
 
+app.post('/produk', async (req, res) => {
+    
+})
 app.post('/data', (req, res) => {
     const { nama } = req.body;
     res.send(`Data diterima: ${nama}`);
