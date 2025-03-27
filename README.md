@@ -68,26 +68,6 @@ npm run dev
 Frontend akan berjalan di `http://localhost:5173`.
 
 ---
-## 📌 Daftar Endpoint API
-
-### **1. Endpoint Produk**
-| Method | Endpoint       | Deskripsi                         |
-|--------|--------------|---------------------------------|
-| GET    | /api/produk   | Mendapatkan semua data produk    |
-| GET    | /api/produk/:id | Mendapatkan satu produk berdasarkan ID |
-| POST   | /api/produk   | Menambahkan produk baru          |
-| PUT    | /api/produk/:id | Mengupdate produk berdasarkan ID |
-| DELETE | /api/produk/:id | Menghapus produk berdasarkan ID |
-
-### **2. Contoh Payload untuk POST dan PUT**
-```json
-{
-  "nama": "Produk A",
-  "harga": 10000
-}
-```
-
----
 ## 🎨 Teknologi yang Digunakan
 - **Frontend:** React (Vite), Tailwind CSS, Axios, React Hooks
 - **Backend:** Express.js, Node.js, CORS
@@ -108,20 +88,8 @@ Frontend akan berjalan di `http://localhost:5173`.
 ![alt text](image-12.png)
 ![alt text](image-13.png)
 
-<<<<<<< HEAD
 4. **Tampilan Hapus Produk**
 ![alt text](image-14.png)
-=======
-4. **Tampilan Hapus Produk dengan Notifikasi Konfirmasi**
-![alt text](image-3.png)
-
-5. **Tampilan Database di pgAdmin setelah CRUD**
-![alt text](image-4.png)
-
-6. **Hasil API**
-![alt text](image-7.png)
-![alt text](image-8.png)
->>>>>>> c0d334582711f5f9c498017d486f9d079c125a57
 
 ---
 ## 📌 Troubleshooting
