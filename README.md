@@ -111,7 +111,6 @@ Frontend akan berjalan di `http://localhost:5173`.
 
 6. **Hasil API**
 ![alt text](image-7.png)
-
 ![alt text](image-8.png)
 
 ---
