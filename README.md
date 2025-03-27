@@ -109,18 +109,10 @@ Frontend akan berjalan di `http://localhost:5173`.
 5. **Tampilan Database di pgAdmin setelah CRUD**
 ![alt text](image-4.png)
 
-6. **Hasil API Request di Postman**
+6. **Hasil API**
 ![alt text](image-7.png)
 
 ![alt text](image-8.png)
-
-    - GET
-![alt text](image-6.png)
-
-    - POST
-    - PUT
-    - DELETE
-![alt text](image-9.png)
 
 ---
 ## 📌 Troubleshooting
