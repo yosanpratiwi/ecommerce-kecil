@@ -1,7 +1,3 @@
-### Nama: Yosan Pratiwi
-### NIM: 10231091
-### UTS PROWEB
-
 # Aplikasi CRUD dengan React, Express, dan PostgreSQL
 
 Aplikasi ini merupakan proyek latihan untuk mengimplementasikan fitur CRUD menggunakan **React (Vite) di frontend**, **Express.js di backend**, dan **PostgreSQL sebagai database**.
