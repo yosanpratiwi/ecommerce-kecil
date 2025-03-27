@@ -6,6 +6,10 @@
 
 Aplikasi ini merupakan proyek latihan untuk mengimplementasikan fitur CRUD menggunakan **React (Vite) di frontend**, **Express.js di backend**, dan **PostgreSQL sebagai database**.
 
+## Developed by:
+- Raisha Alika Irwandira (10231077)
+- Yosan Pratiwi (10231091)
+
 ---
 ## 📌 Fitur Aplikasi
 - **Menampilkan daftar produk dengan tampilan responsif**
