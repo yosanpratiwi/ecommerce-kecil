@@ -2,6 +2,10 @@
 
 Aplikasi ini merupakan proyek latihan untuk mengimplementasikan fitur CRUD menggunakan **React (Vite) di frontend**, **Express.js di backend**, dan **PostgreSQL sebagai database**.
 
+## Developed by:
+- Raisha Alika Irwandira (10231077)
+- Yosan Pratiwi (10231091)
+
 ---
 ## Developed by:
 - Raisha Alika Irwandira (10231077)
@@ -104,8 +108,20 @@ Frontend akan berjalan di `http://localhost:5173`.
 ![alt text](image-12.png)
 ![alt text](image-13.png)
 
+<<<<<<< HEAD
 4. **Tampilan Hapus Produk**
 ![alt text](image-14.png)
+=======
+4. **Tampilan Hapus Produk dengan Notifikasi Konfirmasi**
+![alt text](image-3.png)
+
+5. **Tampilan Database di pgAdmin setelah CRUD**
+![alt text](image-4.png)
+
+6. **Hasil API**
+![alt text](image-7.png)
+![alt text](image-8.png)
+>>>>>>> c0d334582711f5f9c498017d486f9d079c125a57
 
 ---
 ## 📌 Troubleshooting
