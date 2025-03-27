@@ -1,11 +1,11 @@
-### Nama: Yosan Pratiwi
-### NIM: 10231091
-### UTS PROWEB
-
 # Aplikasi CRUD dengan React, Express, dan PostgreSQL
 
 Aplikasi ini merupakan proyek latihan untuk mengimplementasikan fitur CRUD menggunakan **React (Vite) di frontend**, **Express.js di backend**, dan **PostgreSQL sebagai database**.
 
+---
+## Developed by:
+- Raisha Alika Irwandira (10231077)
+- Yosan Pratiwi (10231091)
 ---
 ## 📌 Fitur Aplikasi
 - **Menampilkan daftar produk dengan tampilan responsif**
@@ -94,33 +94,18 @@ Frontend akan berjalan di `http://localhost:5173`.
 
 ---
 ## 📷 Screenshot Aplikasi
-1. **Tampilan Tambah Produk dengan Form Validasi**
-![alt text](image.png)
+1. **Tampilan Tambah Produk**
+![alt text](image-10.png)
 
-2. **Tampilan Read Data dalam Tabel dengan Pagination**
-![alt text](image-1.png)
+2. **Tampilan Read Data dalam Tabel**
+![alt text](image-11.png)
 
-3. **Tampilan Edit Produk dengan Modal Pop-up**
-![alt text](image-2.png)
+3. **Tampilan Edit Produk**
+![alt text](image-12.png)
+![alt text](image-13.png)
 
-4. **Tampilan Hapus Produk dengan Notifikasi Konfirmasi**
-![alt text](image-3.png)
-
-5. **Tampilan Database di pgAdmin setelah CRUD**
-![alt text](image-4.png)
-
-6. **Hasil API Request di Postman**
-![alt text](image-7.png)
-
-![alt text](image-8.png)
-
-    - GET
-![alt text](image-6.png)
-
-    - POST
-    - PUT
-    - DELETE
-![alt text](image-9.png)
+4. **Tampilan Hapus Produk**
+![alt text](image-14.png)
 
 ---
 ## 📌 Troubleshooting
@@ -232,9 +217,6 @@ pool.query('SELECT 1', (err, res) => {
 });
 ```
 - Pastikan tidak ada kesalahan pada query SQL (INSERT, SELECT, dll.).
-
-### **6. Daftar produk tidak muncul di aplikasi**
-![alt text](<Screenshot 2025-03-27 134340.png>)
 
 ### **6. Database PostgreSQL Tidak Terhubung**
 - Pastikan PostgreSQL sudah berjalan dan user `postgres` memiliki akses.
