@@ -96,20 +96,27 @@ Frontend akan berjalan di `http://localhost:5173`.
 ## 📷 Screenshot Aplikasi
 1. **Tampilan Tambah Produk dengan Form Validasi**
 ![alt text](image.png)
+
 2. **Tampilan Read Data dalam Tabel dengan Pagination**
 ![alt text](image-1.png)
+
 3. **Tampilan Edit Produk dengan Modal Pop-up**
 ![alt text](image-2.png)
+
 4. **Tampilan Hapus Produk dengan Notifikasi Konfirmasi**
 ![alt text](image-3.png)
+
 5. **Tampilan Database di pgAdmin setelah CRUD**
 ![alt text](image-4.png)
+
 6. **Hasil API Request di Postman**
 ![alt text](image-7.png)
 
 ![alt text](image-8.png)
+
     - GET
 ![alt text](image-6.png)
+
     - POST
     - PUT
     - DELETE
@@ -118,29 +125,118 @@ Frontend akan berjalan di `http://localhost:5173`.
 ---
 ## 📌 Troubleshooting
 
-### **1. Node.js Tidak Berjalan**
+### **1. Pesan "Cannot GET /" pada localhost:3001**
 ![alt text](<Screenshot 2025-03-27 115225.png>)
-```sh
-node -v
+- Pastikan server Node.js atau Express berjalan dengan benar.
+- Jika menggunakan Express, tambahkan rute di server.js atau app.js:
+```js
+app.get('/', (req, res) => {
+    res.send('Hello, World!');
+});
 ```
-Pastikan Node.js sudah terinstall dengan benar.
+- Pastikan ada script untuk menjalankan server dengan benar.
+- Jika sudah ada rute yang benar, coba restart server:
+```sh
+ctrl + c 
+npm start
+```
 
-### **1. Node.js Tidak Berjalan**
+### **2. Nama dan harga tidak tersimpan dengan benar di database**
 ![alt text](<Screenshot 2025-03-27 120237.png>)
+- Jika menggunakan Express, pastikan middleware express.json() sudah ada di server.js atau app.js:
+```js
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+```
+- Pastikan nama kolom di database cocok dengan yang dikirim dari frontend (nama, harga).
+- Pastikan query INSERT ke database sudah benar. Contoh untuk PostgreSQL dengan pg:
+```js
+const insertQuery = 'INSERT INTO produk (nama, harga) VALUES ($1, $2) RETURNING *';
+const values = [req.body.nama, req.body.harga];
 
-### **1. Node.js Tidak Berjalan**
+const result = await pool.query(insertQuery, values);
+res.json(result.rows[0]);
+```
+- Periksa apakah request dikirim dalam format JSON (di Postman pilih raw JSON).
+- Tambahkan log untuk memastikan data diterima dengan benar di backend:
+```js
+console.log(req.body);
+```
+### **3. Data nama dan harga tersimpan sebagai null**
 ![alt text](<Screenshot 2025-03-27 121601.png>)
+- Pastikan Express bisa membaca request body JSON:
+```js
+app.use(express.json());
+```
+- Pastikan query INSERT di backend benar dan menggunakan parameterized query:
+```js
+const insertQuery = 'INSERT INTO produk (nama, harga) VALUES ($1, $2) RETURNING *';
+const values = [req.body.nama, req.body.harga];
 
-### **1. Node.js Tidak Berjalan**
+const result = await pool.query(insertQuery, values);
+res.json(result.rows[0]);
+```
+- Kirim request dalam format JSON (di Postman: raw JSON).
+- Cek apakah req.body berisi data yang benar:
+```js
+console.log(req.body);
+```
+- Jalankan SQL berikut di pgAdmin untuk memastikan tidak ada constraint yang mencegah insert:
+```sql
+INSERT INTO produk (nama, harga) VALUES ('Produk Test', 50000);
+```
+- Setelah perbaikan, restart server Node.js:
+
+### **4. Data tidak tersimpan dengan benar saat insert**
 ![alt text](<Screenshot 2025-03-27 121722.png>)
-
-### **1. Node.js Tidak Berjalan**
+- Pastikan express.json() Aktif di Backend
+```js
+app.use(express.json());
+```
+- Gunakan console.log(req.body); untuk memastikan data yang dikirim ke backend sudah sesuai.
+- Validasi Data Sebelum Insert Tambahkan validasi sebelum menyimpan data:
+```js
+if (!req.body.nama || req.body.harga < 0) {
+    return res.status(400).json({ error: "Data tidak valid" });
+}
+```
+- Pastikan Query INSERT Menggunakan Parameter yang Benar
+```js
+const insertQuery = 'INSERT INTO produk (nama, harga) VALUES ($1, $2) RETURNING *';
+const values = [req.body.nama, req.body.harga];
+const result = await pool.query(insertQuery, values);
+res.json(result.rows[0]);
+```
+- Hapus Data Null untuk Membersihkan Database
+```sql
+DELETE FROM produk WHERE nama IS NULL;
+```
+### **5. Kesalahan di backend**
 ![alt text](<Screenshot 2025-03-27 122244.png>)
+- Tambahkan console.error(err); di bagian error handler:
+```js
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+});
+```
+- Pastikan Database PostgreSQL Terhubung
+- Tes Koneksi ke Database dengan menambahkan ini sebelum query:
+```js
+pool.query('SELECT 1', (err, res) => {
+    if (err) {
+        console.error("Database connection error", err);
+    } else {
+        console.log("Database connected!");
+    }
+});
+```
+- Pastikan tidak ada kesalahan pada query SQL (INSERT, SELECT, dll.).
 
-### **1. Node.js Tidak Berjalan**
+### **6. Daftar produk tidak muncul di aplikasi**
 ![alt text](<Screenshot 2025-03-27 134340.png>)
 
-### **2. Database PostgreSQL Tidak Terhubung**
+### **6. Database PostgreSQL Tidak Terhubung**
 - Pastikan PostgreSQL sudah berjalan dan user `postgres` memiliki akses.
 - Cek konfigurasi di `db.js`.
 - Jalankan perintah berikut di PostgreSQL untuk memastikan database sudah ada:
@@ -148,7 +244,7 @@ Pastikan Node.js sudah terinstall dengan benar.
 SELECT * FROM produk;
 ```
 
-### **3. Masalah Fetch Data di Frontend**
+### **7. Masalah Fetch Data di Frontend**
 - Pastikan backend berjalan dengan benar di `http://localhost:3001`.
 - Gunakan `npm install axios` jika Axios belum terinstall.
 - Pastikan CORS sudah diaktifkan di backend.
